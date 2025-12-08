@@ -6,7 +6,7 @@ row = 5
 col = 5
 board = []
 
-""" board =    [[empty, empty, empty, empty], 
+""" board = [[empty, empty, empty, empty], 
             [empty, empty, empty, empty], 
             [empty, empty, empty, empty], 
             [empty, empty, empty, empty]] """
