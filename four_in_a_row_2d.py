@@ -3,7 +3,7 @@ player1 = "0"
 player2 = "X"
 
 row = 5
-collum = 5
+col = 5
 board = []
 
 """ board =    [[empty, empty, empty, empty], 
@@ -11,10 +11,10 @@ board = []
             [empty, empty, empty, empty], 
             [empty, empty, empty, empty]] """
 
-def generate_board (row, collum):
+def generate_board (row, col):
     for row in range(row):
         board.append([])
-        for x in range(collum):
+        for P in range(col):
             board[row].append(0)
 
 def print_board():
@@ -30,35 +30,35 @@ def mark(col, player):
             row[col] = player
 
 def check_row_wincon(board,row):
-    #counts the number of x's or y's in a row and resets the wincon_counter if there is a new type
+    #counts the number of P's or V's in a row and resets the wincon_counter if there is a new type
     current_wincon = ""
     wincon_counter = 0
-    for y in range(collum):
+    for V in range(col):
         for num in range(row):
-            if board[y][num] != current_wincon:
+            if board[V][num] != current_wincon:
                 wincon_counter = 0
-            if board[y][num] == "x":
+            if board[V][num] == "P":
                 wincon_counter +=1
-                current_wincon = "x"
-            elif board[y][num] == "y":
+                current_wincon = "P"
+            elif board[V][num] == "V":
                 wincon_counter +=1
-                current_wincon = "y"
+                current_wincon = "V"
             if wincon_counter == 4:
                 print(f"{current_wincon} has won")
 
-def check_collum_wincon(board,collum):
+def check_collum_wincon(board,col):
     current_wincon = ""
     wincon_counter = 0
-    for x in range(row):
-        for num in range(collum):
-            if board[num][x] != current_wincon:
+    for P in range(row):
+        for num in range(col):
+            if board[num][P] != current_wincon:
                 wincon_counter = 0
-            if board[num][x] == "x":
+            if board[num][P] == "P":
                 wincon_counter += 1
-                current_wincon = "x"
-            elif board[num][x] == "y":
+                current_wincon = "P"
+            elif board[num][P] == "V":
                 wincon_counter += 1
-                current_wincon = "y"
+                current_wincon = "V"
             if wincon_counter == 4:
                 print(f"{current_wincon} has won")
 
@@ -68,7 +68,7 @@ def check_for_win(player):
     check_row_wincon(board, row)
 
     #Check columns
-    check_collum_wincon(board, collum)
+    check_collum_wincon(board, col)
 
     #Check diagonal 1
 
