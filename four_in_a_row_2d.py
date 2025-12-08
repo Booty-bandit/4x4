@@ -76,6 +76,10 @@ def check_for_win(player):
     pass 
 
 def game_loop():
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     generate_board(row,col)
     print_board()
     while True:
@@ -83,5 +87,5 @@ def game_loop():
         user_inp = int(input("Player 1 >"))-1
         mark(user_inp, player1)
         print_board()
-            
+        
 game_loop()
