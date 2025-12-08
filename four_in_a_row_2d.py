@@ -14,8 +14,8 @@ board = []
 def generate_board (row, col):
     for row in range(row):
         board.append([])
-        for P in range(col):
-            board[row].append(0)
+        for i in range(col):
+            board[row].append("0")
 
 def print_board():
     print("| 1 | 2 | 3 | 4 |")
@@ -76,7 +76,7 @@ def check_for_win(player):
     pass 
 
 def game_loop():
-    
+    generate_board(row,col)
     print_board()
     while True:
         
