@@ -1,9 +1,9 @@
 empty = "."
-player1 = "0"
-player2 = "X"
+player1 = "🔴"
+player2 = "🔵"
 
 row = 5
-col = 5
+col = 6
 board = []
 
 """ board = [[empty, empty, empty, empty], 
@@ -17,9 +17,13 @@ def generate_board (row, col):
         for i in range(col):
             board[row].append("0")
 
-def print_board():
-    print("| 1 | 2 | 3 | 4 |")
-    print("| _ | _ | _ | _ |")
+def print_board(col):
+    for i in range(col):
+        print(f"| {i+1}", end = " ")
+    print("|")
+    for j in range(col):
+        print("| _ |", )
+    
     for row in range(0, len(board)):
         for col in board[row]:
             print("| " + col, end = " ")
@@ -76,12 +80,9 @@ def check_for_win(player):
     pass 
 
 def game_loop():
-<<<<<<< Updated upstream
-=======
     
->>>>>>> Stashed changes
     generate_board(row,col)
-    print_board()
+    print_board(col)
     while True:
         
         user_inp = int(input("Player 1 >"))-1
