@@ -37,12 +37,12 @@ def check_row_wincon(board,row):
         for num in range(row):
             if board[V][num] != current_wincon:
                 wincon_counter = 0
-            if board[V][num] == "P":
+            if board[V][num] == player1:
                 wincon_counter +=1
-                current_wincon = "P"
-            elif board[V][num] == "V":
+                current_wincon = player1
+            elif board[V][num] == player2:
                 wincon_counter +=1
-                current_wincon = "V"
+                current_wincon = player2
             if wincon_counter == 4:
                 print(f"{current_wincon} has won")
 
@@ -53,12 +53,12 @@ def check_collum_wincon(board,col):
         for num in range(col):
             if board[num][P] != current_wincon:
                 wincon_counter = 0
-            if board[num][P] == "P":
+            if board[num][P] == player1:
                 wincon_counter += 1
-                current_wincon = "P"
-            elif board[num][P] == "V":
+                current_wincon = player1
+            elif board[num][P] == player2:
                 wincon_counter += 1
-                current_wincon = "V"
+                current_wincon = player2
             if wincon_counter == 4:
                 print(f"{current_wincon} has won")
 
