@@ -15,15 +15,15 @@ def generate_board (row, col):
     for row in range(row):
         board.append([])
         for i in range(col):
-            board[row].append("0")
+            board[row].append(empty)
 
 def print_board(col):
     for i in range(col):
         print(f"| {i+1}", end = " ")
     print("|")
     for j in range(col):
-        print("| _ |", )
-    
+        print(f"| {empty}", end = " ")
+    print("|")
     for row in range(0, len(board)):
         for col in board[row]:
             print("| " + col, end = " ")
@@ -65,6 +65,7 @@ def check_collum_wincon(board,col):
                 current_wincon = player2
             if wincon_counter == 4:
                 print(f"{current_wincon} has won")
+
 
 
 def check_for_win(player):
