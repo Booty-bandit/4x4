@@ -22,7 +22,7 @@ def print_board(col):
         print(f"| {i+1}", end = " ")
     print("|")
     for j in range(col):
-        print(f"| {empty}", end = " ")
+        print(f"| _", end = " ")
     print("|")
     for row in range(0, len(board)):
         for col in board[row]:
