@@ -2,7 +2,7 @@ empty = "."
 player1 = "🔴"
 player2 = "🔵"
 
-row = 5
+row = 7
 col = 6
 board = []
 
@@ -30,8 +30,14 @@ def print_board(col):
         print("|")
        
 def mark(col, player):
-    for row in board:
-            row[col] = player
+    for row in range (len(board)-1,-1,-1):
+           if board[row][col] == empty:
+               board[row][col] = player
+               return True
+    print("there is no more room here")
+    return False
+
+
 
 def check_row_wincon(board,row):
     #counts the number of P's or V's in a row and resets the wincon_counter if there is a new type
@@ -88,6 +94,6 @@ def game_loop():
         
         user_inp = int(input("Player 1 >"))-1
         mark(user_inp, player1)
-        print_board()
+        print_board(col)
         
 game_loop()
