@@ -1,15 +1,10 @@
-empty = "."
+empty = ".."
 player1 = "🔴"
 player2 = "🔵"
 
-row = 7
-col = 6
+row = 6
+col = 7
 board = []
-
-""" board = [[empty, empty, empty, empty], 
-            [empty, empty, empty, empty], 
-            [empty, empty, empty, empty], 
-            [empty, empty, empty, empty]] """
 
 def generate_board (row, col):
     for row in range(row):
@@ -19,10 +14,10 @@ def generate_board (row, col):
 
 def print_board(col):
     for i in range(col):
-        print(f"| {i+1}", end = " ")
+        print(f"| {i+1} ", end = " ")
     print("|")
     for j in range(col):
-        print(f"| _", end = " ")
+        print(f"| __", end = " ")
     print("|")
     for row in range(0, len(board)):
         for col in board[row]:
@@ -37,42 +32,48 @@ def mark(col, player):
     print("there is no more room here")
     return False
 
-
-
 def check_row_wincon(board,row):
-    #counts the number of P's or V's in a row and resets the wincon_counter if there is a new type
+    #counts the number of C's or R's in a row and resets the wincon_counter if there is a new type
     current_wincon = ""
     wincon_counter = 0
-    for V in range(col):
+    for R in range(col):
         for num in range(row):
-            if board[V][num] != current_wincon:
+            if board[num][R] != current_wincon:
                 wincon_counter = 0
-            if board[V][num] == player1:
+            if board[num][R] == player1:
                 wincon_counter +=1
                 current_wincon = player1
-            elif board[V][num] == player2:
+            elif board[num][R] == player2:
                 wincon_counter +=1
                 current_wincon = player2
+            if board[num][R] == empty:
+                wincon_counter = 0
+                current_wincon = ""
             if wincon_counter == 4:
-                print(f"{current_wincon} has won")
+                print(f"{current_wincon} has won row")
+        wincon_counter = 0
+        current_wincon = ""
 
 def check_collum_wincon(board,col):
     current_wincon = ""
     wincon_counter = 0
-    for P in range(row):
+    for C in range(row):
         for num in range(col):
-            if board[num][P] != current_wincon:
+            if board[C][num] != current_wincon:
                 wincon_counter = 0
-            if board[num][P] == player1:
+            if board[C][num] == player1:
                 wincon_counter += 1
                 current_wincon = player1
-            elif board[num][P] == player2:
+            elif board[C][num] == player2:
                 wincon_counter += 1
                 current_wincon = player2
+            if board[C][num] == empty:
+                wincon_counter = 0
+                current_wincon = ""
             if wincon_counter == 4:
-                print(f"{current_wincon} has won")
-
-
+                print(f"{current_wincon} has won col")
+        wincon_counter = 0
+        current_wincon = ""
 
 def check_for_win(player):
     #Check rows
@@ -87,7 +88,6 @@ def check_for_win(player):
     pass 
 
 def game_loop():
-    
     generate_board(row,col)
     print_board(col)
     while True:
@@ -95,5 +95,6 @@ def game_loop():
         user_inp = int(input("Player 1 >"))-1
         mark(user_inp, player1)
         print_board(col)
+        check_for_win(player1)
         
 game_loop()
