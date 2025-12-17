@@ -75,6 +75,31 @@ def check_collum_wincon(board,col):
         wincon_counter = 0
         current_wincon = ""
 
+def check_diagonal_right_wincon(board,col):
+    current_wincon = ""
+    wincon_counter = 0
+    for drop in range(col):
+        for C in range(row):
+            for r in range(col):
+                if C+r >= row or r+drop >= col:
+                    break
+                if board[C+r][r+drop] != current_wincon:
+                    wincon_counter = 0
+                if board[C+r][r+drop] == player1:
+                    wincon_counter += 1
+                    current_wincon = player1
+                elif board[C+r][r+drop] == player2:
+                    wincon_counter += 1
+                    current_wincon = player2
+                if board[C+r][r+drop] == empty:
+                    wincon_counter = 0
+                    current_wincon = ""
+                if wincon_counter == 4:
+                    print(f"{current_wincon} has won diagonal right fall")
+                    return True
+            wincon_counter = 0
+            current_wincon = ""
+
 def check_for_win(player):
     #Check rows
     check_row_wincon(board, row)
@@ -83,7 +108,7 @@ def check_for_win(player):
     check_collum_wincon(board, col)
 
     #Check diagonal 1
-
+    check_diagonal_right_wincon(board,col)
     #Check diagonal 2
     pass 
 
@@ -92,11 +117,11 @@ def game_loop():
     print_board(col)
     while True:
         
-        user_inp = int(input("Player 1 >"))-1
+        user_inp = int(input("Player 1 🔴>"))-1
         mark(user_inp, player1)
         print_board(col)
         check_for_win(player1)
-        user_inp = int(input("Player 2 >"))-1
+        user_inp = int(input("Player 2 🔵>"))-1
         mark(user_inp,player2)
         print_board(col)
         check_for_win(player2)
