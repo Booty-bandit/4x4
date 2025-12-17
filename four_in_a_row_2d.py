@@ -75,6 +75,38 @@ def check_collum_wincon(board,col):
         wincon_counter = 0
         current_wincon = ""
 
+
+def diagonal2(board,row,col):
+   for r in range(row):
+        for c in range(col):
+            current_wincon = ""
+            wincon_counter = 0
+            
+            while r >= 0 and c < col:
+                if board[r][c] != current_wincon:
+                    wincon_counter = 0
+
+                if board[r][c] == player1:
+                    wincon_counter += 1
+                    current_wincon = player1
+                elif board[r][c] == player2:
+                    wincon_counter += 1
+                    current_wincon = player2
+                else:
+                    wincon_counter = 0
+                    current_wincon = ""
+
+                if wincon_counter == 4:
+                    print(f"{current_wincon} has won diagonal")
+                    return True
+
+                r -= 1
+                c += 1
+            
+
+            
+
+
 def check_for_win(player):
     #Check rows
     check_row_wincon(board, row)
@@ -85,6 +117,7 @@ def check_for_win(player):
     #Check diagonal 1
 
     #Check diagonal 2
+    diagonal2(board,row,col)
     pass 
 
 def game_loop():
