@@ -96,5 +96,9 @@ def game_loop():
         mark(user_inp, player1)
         print_board(col)
         check_for_win(player1)
-        
+        user_inp = int(input("Player 2 >"))-1
+        mark(user_inp,player2)
+        print_board(col)
+        check_for_win(player2)
+               
 game_loop()
